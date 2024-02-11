@@ -5,10 +5,10 @@ import * as React from "react";
 // 1. import `NextUIProvider` component
 import { NextUIProvider } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-import Header from "./Header";
+import Header from "./base/Header";
 import { ThemeDarkHelper, ThemeDarkStore } from "@/theme/ThemeDarkHelper";
 import RenderOnlyClient from "./RenderOnlyClient";
-import Footer from "./Footer";
+import Footer from "./base/Footer";
 
 export function NextUIApp(
   props: Readonly<{

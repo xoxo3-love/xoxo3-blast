@@ -1,4 +1,4 @@
-import { LayoutStore } from "./helper/LayoutHelper";
+import { LayoutStore } from "../helper/LayoutHelper";
 
 export default function PageWrap(props: { children: React.ReactNode; className?: string }) {
   let { maxWidth_tailwindclass } = LayoutStore;

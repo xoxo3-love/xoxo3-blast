@@ -1,18 +1,16 @@
-import React from "react";
+import ThemeDarkSwitch from "@/theme/ThemeDarkSwitch";
 import {
+  Link,
   Navbar,
-  NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  Button,
-  NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  NavbarMenuToggle,
 } from "@nextui-org/react";
-import ThemeDarkSwitch from "@/theme/ThemeDarkSwitch";
-import { LayoutStore } from "./helper/LayoutHelper";
-import Logo from "./Logo";
+import React from "react";
+import { LayoutStore } from "../helper/LayoutHelper";
+import NavbarLogo from "../logo/NavbarLogo";
 
 export default function Header() {
   let { maxWidth_CONST } = LayoutStore;
@@ -20,24 +18,15 @@ export default function Header() {
 
   const menuItems = ["产品", "治理"];
 
-  let brandLogo = (
-    <NavbarBrand>
-      <Logo />
-      <Link color="foreground" href="/">
-        <p className="font-bold text-inherit">Xoxo3</p>
-      </Link>
-    </NavbarBrand>
-  );
-
   return (
     <Navbar isBordered maxWidth={maxWidth_CONST} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className="sm:hidden">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
-        {brandLogo}
+        <NavbarLogo />
       </NavbarContent>
 
       <NavbarContent className="hidden gap-4 sm:flex" justify="center">
-        {brandLogo}
+        <NavbarLogo />
 
         <NavbarItem isActive>
           <Link href="/">产品</Link>

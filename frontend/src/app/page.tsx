@@ -1,5 +1,5 @@
 "use client";
-import PageWrap from "@/layout/PageWrap";
+import PageWrap from "@/layout/base/PageWrap";
 import { useState } from "react";
 
 export default function Home(props: {}) {
