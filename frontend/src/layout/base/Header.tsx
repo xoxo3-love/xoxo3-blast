@@ -32,7 +32,12 @@ export default function Header() {
           <Link href="/">产品</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#" aria-current="page">
+          <Link
+            color="foreground"
+            href="https://xoxo3.notion.site/xoxo3/XOXO3-love-34542c6cffe6426d93371aadc5d32bb5"
+            target="_blank"
+            aria-current="page"
+          >
             治理
           </Link>
         </NavbarItem>
