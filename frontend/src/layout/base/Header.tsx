@@ -1,6 +1,7 @@
 import ThemeDarkSwitch from "@/theme/ThemeDarkSwitch";
 import {
   Link,
+  LinkProps,
   Navbar,
   NavbarContent,
   NavbarItem,
@@ -11,6 +12,20 @@ import {
 import React from "react";
 import { LayoutStore } from "../helper/LayoutHelper";
 import NavbarLogo from "../logo/NavbarLogo";
+
+function NavbarItem_Constom(props: LinkProps) {
+  return (
+    <NavbarItem>
+      <Link
+        color="foreground"
+        href="https://xoxo3.notion.site/xoxo3/XOXO3-love-34542c6cffe6426d93371aadc5d32bb5"
+        target="_blank"
+        aria-current="page"
+        {...props}
+      ></Link>
+    </NavbarItem>
+  );
+}
 
 export default function Header() {
   let { maxWidth_CONST } = LayoutStore;
@@ -31,8 +46,9 @@ export default function Header() {
         <NavbarItem isActive>
           <Link href="/">产品</Link>
         </NavbarItem>
+        <NavbarItem_Constom children="$XOXO3 空投" />
         <NavbarItem>
-          <Link href="/airdrop">空投</Link>
+          <Link href="/airdrop"></Link>
         </NavbarItem>
         <NavbarItem>
           <Link
