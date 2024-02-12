@@ -9,20 +9,22 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LayoutStore } from "../helper/LayoutHelper";
 import NavbarLogo from "../logo/NavbarLogo";
+import { usePathname, useRouter } from "next/navigation";
 
 function NavbarItem_Constom(props: LinkProps) {
+  const pathname = usePathname();
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    setIsActive(pathname == props.href);
+  }, [pathname, props.href]);
+
   return (
-    <NavbarItem>
-      <Link
-        color="foreground"
-        href="https://xoxo3.notion.site/xoxo3/XOXO3-love-34542c6cffe6426d93371aadc5d32bb5"
-        target="_blank"
-        aria-current="page"
-        {...props}
-      ></Link>
+    <NavbarItem isActive={isActive}>
+      <Link color={isActive ? "primary" : "foreground"} {...props}></Link>
     </NavbarItem>
   );
 }
@@ -43,23 +45,14 @@ export default function Header() {
       <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         <NavbarLogo />
 
-        <NavbarItem isActive>
-          <Link href="/">产品</Link>
-        </NavbarItem>
-        <NavbarItem_Constom children="$XOXO3 空投" />
-        <NavbarItem>
-          <Link href="/airdrop"></Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link
-            color="foreground"
-            href="https://xoxo3.notion.site/xoxo3/XOXO3-love-34542c6cffe6426d93371aadc5d32bb5"
-            target="_blank"
-            aria-current="page"
-          >
-            治理
-          </Link>
-        </NavbarItem>
+        <NavbarItem_Constom href="/">产品</NavbarItem_Constom>
+        <NavbarItem_Constom href="/airdrop">空投</NavbarItem_Constom>
+        <NavbarItem_Constom
+          href="https://xoxo3.notion.site/xoxo3/XOXO3-love-34542c6cffe6426d93371aadc5d32bb5"
+          target="_blank"
+        >
+          治理
+        </NavbarItem_Constom>
       </NavbarContent>
 
       <NavbarContent justify="end">
