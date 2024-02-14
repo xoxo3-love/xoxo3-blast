@@ -1,9 +1,9 @@
 import { Button, Listbox, ListboxItem, Select, SelectItem } from "@nextui-org/react";
-import { configZH } from "../airdrop/word/zh";
 import { HeartSVG } from "./HeartSVG";
 import { LegacyRef, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import { useRouter } from "next/navigation";
+import { WordHelper } from "@/helper/word/WordHelper";
 
 export default function GameMenu() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -51,7 +51,7 @@ export default function GameMenu() {
                   }
                 }}
               >
-                {configZH.map((animal, index) => (
+                {WordHelper.getInstance().map((animal, index) => (
                   <SelectItem key={index}>{animal.name}</SelectItem>
                 ))}
               </Select>
