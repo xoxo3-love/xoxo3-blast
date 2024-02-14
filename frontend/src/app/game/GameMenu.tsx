@@ -7,7 +7,7 @@ import { ConfettiHelper } from "@/helper/ConfettiHelper";
 
 export default function GameMenu() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const domRef = useRef<Element>();
+  const domRef = useRef(null);
   const router = useRouter();
   const wordInstance = WordHelper.useInstance();
 
