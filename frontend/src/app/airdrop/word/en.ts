@@ -1,4 +1,4 @@
-const config = {
+export const configEN = {
   level1: [
     "Meow three times",
     "Take a funny selfie together",
