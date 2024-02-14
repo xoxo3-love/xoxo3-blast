@@ -30,33 +30,36 @@ export default function GameMenu() {
       <div className="mt-4"></div>
       <div className="relative flex h-full min-h-[320px] w-full items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FF72E1] to-[#F54C7A] px-8 py-12">
         <div>
-          <div className="flex flex-row gap-4" ref={domRef}>
-            <Select
-              label="关系阶段"
-              className="w-[200px]"
-              selectedKeys={[selectedIndex + ""]}
-              onChange={(e) => {
-                if (!e.target.value) {
-                  return;
-                }
-                const value = parseInt(e.target.value);
-                setSelectedIndex(value);
+          <div className="flex flex-row gap-4">
+            <div ref={domRef}>
+              <Select
+                label="关系阶段"
+                className="w-[200px]"
+                selectedKeys={[selectedIndex + ""]}
+                onChange={(e) => {
+                  if (!e.target.value) {
+                    return;
+                  }
+                  const value = parseInt(e.target.value);
+                  setSelectedIndex(value);
 
-                if (value > selectedIndex) {
-                  // @ts-ignore
-                  showConfetti(domRef.current);
-                }
-              }}
-            >
-              {configZH.map((animal, index) => (
-                <SelectItem key={index}>{animal.name}</SelectItem>
-              ))}
-            </Select>
+                  if (value > selectedIndex) {
+                    // @ts-ignore
+                    showConfetti(domRef.current);
+                  }
+                }}
+              >
+                {configZH.map((animal, index) => (
+                  <SelectItem key={index}>{animal.name}</SelectItem>
+                ))}
+              </Select>
+            </div>
             <Button
-              className="h-auto bg-pink-200 text-pink-900"
+              className="h-auto bg-pink-200 text-pink-500"
               onPress={(e) => {
                 // showConfetti(e.target);
                 // console.log(domRef.current);
+                // @ts-ignore
                 showConfetti(domRef.current);
               }}
             >
