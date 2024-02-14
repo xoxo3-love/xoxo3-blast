@@ -6,6 +6,23 @@ export type TLanguage = "en" | "light" | "auto";
 
 export const LanguageStore = resso({
   currentLanguage: "",
+  supportLanguages: [
+    {
+      label: "简体中文",
+      value: "zh-CN",
+    },
+    {
+      label: "繁体中文",
+      value: "zh-HK",
+    },
+    {
+      label: "English",
+      value: "en",
+    },
+  ] as {
+    label: string;
+    value: string;
+  }[],
 });
 
 export const LanguageHelper = {
