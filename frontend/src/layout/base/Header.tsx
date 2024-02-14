@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import { LayoutStore } from "../helper/LayoutHelper";
 import NavbarLogo from "../logo/NavbarLogo";
 import { usePathname, useRouter } from "next/navigation";
+import LanguageSwitch from "@/language/LanguageSwitch";
 
 function NavbarItem_Constom(props: LinkProps) {
   const pathname = usePathname();
@@ -56,6 +57,10 @@ export default function Header() {
       </NavbarContent>
 
       <NavbarContent justify="end">
+        <NavbarItem>
+          <LanguageSwitch />
+        </NavbarItem>
+
         <NavbarItem>
           <ThemeDarkSwitch />
         </NavbarItem>
