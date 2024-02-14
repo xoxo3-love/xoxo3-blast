@@ -19,7 +19,7 @@
       transition: transform 0.5s;
     }
 
-    .card:hover .card-inner {
+    .card.flipped .card-inner {
       transform: rotateY(180deg);
     }
 
@@ -58,5 +58,14 @@
     </div>
   </div>
 </body>
+
+<script>
+  // 使用 JavaScript 添加交互
+  const card = document.querySelector('.card');
+
+  card.addEventListener('click', function () {
+    card.classList.toggle('flipped');
+  });
+</script>
 
 </html>
