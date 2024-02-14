@@ -1,28 +1,15 @@
 import { Button, Listbox, ListboxItem, Select, SelectItem } from "@nextui-org/react";
 import { HeartSVG } from "./HeartSVG";
 import { LegacyRef, useRef, useState } from "react";
-import confetti from "canvas-confetti";
 import { useRouter } from "next/navigation";
 import { WordHelper } from "@/helper/word/WordHelper";
+import { ConfettiHelper } from "@/helper/ConfettiHelper";
 
 export default function GameMenu() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const domRef = useRef<Element>();
   const router = useRouter();
   const wordInstance = WordHelper.useInstance();
-
-  const showConfetti = (dom: Element) => {
-    const domRect = dom.getBoundingClientRect();
-
-    console.log(domRect);
-
-    confetti({
-      origin: {
-        x: (domRect.x + domRect.width / 2) / innerWidth,
-        y: (domRect.y + domRect.height / 2) / innerHeight,
-      },
-    });
-  };
 
   return (
     <div>
@@ -47,8 +34,9 @@ export default function GameMenu() {
                   setSelectedIndex(value);
 
                   if (value > selectedIndex) {
-                    // @ts-ignore
-                    showConfetti(domRef.current);
+                    if (domRef.current) {
+                      ConfettiHelper.showConfetti(domRef.current);
+                    }
                   }
                 }}
               >

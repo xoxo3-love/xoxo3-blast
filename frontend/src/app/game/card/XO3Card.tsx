@@ -6,6 +6,7 @@ import { useRouterHelper } from "@/helper/useRouterHelper";
 import { Button } from "@nextui-org/react";
 import SVGWrap from "@/components/icon/SVGWrap";
 import SVGMapper from "@/components/icon/SVGMapper";
+import { ConfettiHelper } from "@/helper/ConfettiHelper";
 
 export function XO3Card() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +38,9 @@ export function XO3Card() {
           setCanClose(false);
           setTimeout(() => {
             setCanClose(true);
-          }, 1000);
+          }, 3000);
+
+          ConfettiHelper.showConfetti(document.getElementById("show_card"));
         }
       }}
     >
@@ -48,7 +51,7 @@ export function XO3Card() {
             <div>翻</div>
           </div>
         </div>
-        <div className="card-face back relative rounded-md bg-pink-500 p-4">
+        <div className="card-face back relative rounded-md bg-pink-500 p-4" id="show_card">
           {data.list[currentIndex]}
           <div className={`absolute right-2 top-2 ${canClose ? "" : "hidden"}`}>
             <SVGWrap svg={SVGMapper.materialFlipCameraAndroidFilled} />
