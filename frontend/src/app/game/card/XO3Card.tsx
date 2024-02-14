@@ -21,7 +21,7 @@ export function XO3Card() {
 
   return (
     <div
-      className={["card", isOpen ? "flipped" : ""].join(" ")}
+      className={["card cursor-pointer select-none", isOpen ? "flipped" : ""].join(" ")}
       onClick={() => {
         if (isOpen) {
           if (!canClose) {
