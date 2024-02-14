@@ -29,8 +29,7 @@ export default function LanguageSwitch() {
         items={supportLanguages}
         selectedKeys={[currentLanguage]}
         onAction={(key) => {
-          // console.log("ssss", key);
-          LanguageStore.currentLanguage = key.toString();
+          LanguageHelper.switch(key.toString());
         }}
       >
         {(item) => (

@@ -32,6 +32,7 @@ export const LanguageHelper = {
       return;
     }
 
+    let temp = localStorage.getItem("currentLanguage");
     let lang = "en";
     let set = (...languages: string[][]) => {
       for (let i = 0; i < languages.length; i++) {
@@ -45,8 +46,18 @@ export const LanguageHelper = {
         }
       }
     };
-    set(["zh-CN"], ["zh-HK", "zh-TW"]);
 
+    if (temp) {
+      lang = temp;
+    } else {
+      set(["zh-CN"], ["zh-HK", "zh-TW"]);
+    }
+
+    LanguageHelper.switch(lang);
+  },
+
+  switch(lang: string) {
+    localStorage.setItem("currentLanguage", lang);
     LanguageStore.currentLanguage = lang;
   },
 };
