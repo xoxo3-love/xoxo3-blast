@@ -2,27 +2,32 @@
 
 import resso from "resso";
 
-export type TLanguage = "en" | "light" | "auto";
+export type TLanguage = {
+  label: string;
+  value: string;
+  short: string;
+};
 
 export const LanguageStore = resso({
   currentLanguage: "",
+  currentLanguageItem: {} as TLanguage,
   supportLanguages: [
     {
       label: "简体中文",
       value: "zh-CN",
+      short: "简",
     },
     {
       label: "繁体中文",
       value: "zh-HK",
+      short: "繁",
     },
     {
       label: "English",
       value: "en",
+      short: "EN",
     },
-  ] as {
-    label: string;
-    value: string;
-  }[],
+  ] as TLanguage[],
 });
 
 export const LanguageHelper = {
@@ -56,8 +61,23 @@ export const LanguageHelper = {
     LanguageHelper.switch(lang);
   },
 
+  resetCurrentItem: () => {
+    let { currentLanguage } = LanguageStore;
+    let selected = LanguageStore.supportLanguages[0];
+    for (let i = 0; i < LanguageStore.supportLanguages.length; i++) {
+      let lang = LanguageStore.supportLanguages[i];
+      if (lang.value == currentLanguage) {
+        selected = lang;
+        break;
+      }
+    }
+    LanguageStore.currentLanguageItem = selected;
+    return selected;
+  },
+
   switch(lang: string) {
     localStorage.setItem("currentLanguage", lang);
     LanguageStore.currentLanguage = lang;
+    LanguageHelper.resetCurrentItem();
   },
 };

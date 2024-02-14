@@ -3,11 +3,11 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 import SVGWrap from "@/components/icon/SVGWrap";
 import { useEffect } from "react";
-import { LanguageHelper, LanguageStore } from "./LanguageHelper";
+import { LanguageHelper, LanguageStore, TLanguage } from "./LanguageHelper";
 import SVGMapper from "@/components/icon/SVGMapper";
 
 export default function LanguageSwitch() {
-  const { currentLanguage, supportLanguages } = LanguageStore;
+  const { currentLanguage, supportLanguages, currentLanguageItem } = LanguageStore;
 
   useEffect(() => {
     LanguageHelper.init();
@@ -17,8 +17,9 @@ export default function LanguageSwitch() {
     <Dropdown>
       <DropdownTrigger>
         {/* <Button variant="bordered">Open Menu</Button> */}
-        <Button isIconOnly variant="bordered" className="text-xl" onClick={() => {}}>
-          <SVGWrap svg={SVGMapper.materialLanguageFilled} />
+        <Button isIconOnly variant="bordered" onClick={() => {}}>
+          {/* <SVGWrap svg={SVGMapper.materialLanguageFilled} /> */}
+          {currentLanguageItem.short}
         </Button>
       </DropdownTrigger>
       <DropdownMenu
