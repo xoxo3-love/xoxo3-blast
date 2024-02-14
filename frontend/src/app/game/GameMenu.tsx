@@ -3,10 +3,12 @@ import { configZH } from "../airdrop/word/zh";
 import { HeartSVG } from "./HeartSVG";
 import { LegacyRef, useRef, useState } from "react";
 import confetti from "canvas-confetti";
+import { useRouter } from "next/navigation";
 
 export default function GameMenu() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const domRef = useRef<Element>();
+  const router = useRouter();
 
   const showConfetti = (dom: Element) => {
     const domRect = dom.getBoundingClientRect();
@@ -60,7 +62,8 @@ export default function GameMenu() {
                 // showConfetti(e.target);
                 // console.log(domRef.current);
                 // @ts-ignore
-                showConfetti(domRef.current);
+                // showConfetti(domRef.current);
+                router.push("/game/card?index=" + selectedIndex);
               }}
             >
               Start
