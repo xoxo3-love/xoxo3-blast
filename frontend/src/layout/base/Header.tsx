@@ -59,11 +59,11 @@ export default function Header() {
         <NavbarItem>
           <ThemeDarkSwitch />
         </NavbarItem>
-        <NavbarItem>
-          {/* <Button as={Link} color="primary" href="#" variant="flat">
+        {/* <NavbarItem>
+          <Button as={Link} color="primary" href="#" variant="flat">
             Login
-          </Button> */}
-        </NavbarItem>
+          </Button>
+        </NavbarItem> */}
       </NavbarContent>
 
       <NavbarMenu>

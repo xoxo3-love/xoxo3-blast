@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "animate.css";
+
 import { NextUIApp } from "@/layout/NextUIApp";
 
 export const metadata: Metadata = {
