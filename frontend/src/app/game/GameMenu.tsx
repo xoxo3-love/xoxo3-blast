@@ -1,10 +1,26 @@
 import { Button, Listbox, ListboxItem, Select, SelectItem } from "@nextui-org/react";
 import { configZH } from "../airdrop/word/zh";
 import { HeartSVG } from "./HeartSVG";
-import { useState } from "react";
+import { LegacyRef, useRef, useState } from "react";
+import confetti from "canvas-confetti";
 
 export default function GameMenu() {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const domRef = useRef<Element>();
+
+  const showConfetti = (dom: Element) => {
+    const domRect = dom.getBoundingClientRect();
+
+    console.log(domRect);
+
+    confetti({
+      origin: {
+        x: (domRect.x + domRect.width / 2) / innerWidth,
+        y: (domRect.y + domRect.height / 2) / innerHeight,
+      },
+    });
+  };
+
   return (
     <div>
       <div className="flex flex-col items-center justify-center gap-4">
@@ -14,7 +30,7 @@ export default function GameMenu() {
       <div className="mt-4"></div>
       <div className="relative flex h-full min-h-[320px] w-full items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FF72E1] to-[#F54C7A] px-8 py-12">
         <div>
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-row gap-4" ref={domRef}>
             <Select
               label="关系阶段"
               className="w-[200px]"
@@ -25,14 +41,27 @@ export default function GameMenu() {
                 }
                 const value = parseInt(e.target.value);
                 setSelectedIndex(value);
-                console.log("xxx", value);
+
+                if (value > selectedIndex) {
+                  // @ts-ignore
+                  showConfetti(domRef.current);
+                }
               }}
             >
               {configZH.map((animal, index) => (
                 <SelectItem key={index}>{animal.name}</SelectItem>
               ))}
             </Select>
-            <Button className="h-auto bg-pink-200 text-pink-900">Start</Button>
+            <Button
+              className="h-auto bg-pink-200 text-pink-900"
+              onPress={(e) => {
+                // showConfetti(e.target);
+                // console.log(domRef.current);
+                showConfetti(domRef.current);
+              }}
+            >
+              Start
+            </Button>
           </div>
         </div>
       </div>
