@@ -20,9 +20,7 @@ export default function GameMenu() {
                 </SelectItem>
               ))}
             </Select>
-            <Button color="primary" className="h-auto">
-              Start
-            </Button>
+            <Button className="h-auto bg-pink-200 text-pink-900">Start</Button>
           </div>
         </div>
       </div>
@@ -31,7 +29,7 @@ export default function GameMenu() {
         <div className="mt-4">1. 预设不同阶段互动内容，恋爱，情趣，好玩。满足各种口味快速开局。</div>
         <div className="mt-2">2. 持有 $XOXO3，享有会员权限。</div>
         <div className="mt-2">3. 持有 vXOXO3，均分 xoxo3.love 网站收益。</div>
-        <div className="mt-2">4. 创作者，可铸造 NFT，永久获得打赏。</div>
+        <div className="mt-2">4. 创作者(待上线)，可铸造 NFT，永久获得打赏。</div>
       </div>
     </div>
   );
