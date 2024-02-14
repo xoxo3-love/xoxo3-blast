@@ -9,10 +9,9 @@ import SVGMapper from "@/components/icon/SVGMapper";
 
 export function XO3Card() {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState({
-    at: 0,
-    index: 0,
-  });
+  const [canClose, setCanClose] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const { param } = useRouterHelper({
     index: 0,
   });
@@ -24,18 +23,21 @@ export function XO3Card() {
       className={["card", isOpen ? "flipped" : ""].join(" ")}
       onClick={() => {
         if (isOpen) {
-          if (Date.now() - currentIndex.at < 3000) {
+          if (!canClose) {
             return;
           }
         }
+
         const distValue = !isOpen;
         setIsOpen(distValue);
         if (distValue) {
           let newIndex = Math.floor(data.list.length * Math.random());
-          setCurrentIndex({
-            at: Date.now(),
-            index: newIndex,
-          });
+          setCurrentIndex(newIndex);
+
+          setCanClose(false);
+          setTimeout(() => {
+            setCanClose(true);
+          }, 3000);
         }
       }}
     >
@@ -47,8 +49,8 @@ export function XO3Card() {
           </div>
         </div>
         <div className="card-face back relative rounded-md bg-pink-500 p-4">
-          {data.list[currentIndex.index]}
-          <div className="absolute right-2 top-2">
+          {data.list[currentIndex]}
+          <div className={`absolute right-2 top-2 ${canClose ? "" : "hidden"}`}>
             <SVGWrap svg={SVGMapper.materialCloseFilled} />
           </div>
         </div>
