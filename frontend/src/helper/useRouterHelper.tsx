@@ -1,4 +1,4 @@
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export type TRouteRetBean<T extends object> = {
@@ -13,15 +13,21 @@ export function useRouterHelper<T extends { [key: string]: string | number | str
   otherParam?: O,
 ): TRouteRetBean<T & O> {
   const router = useRouter();
-  const params = useParams();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   let getParams = () => {
     let retParam = Object.assign({}, defaultParam);
 
+    let allSearchParams: { [key: string]: string[] } = {};
+    searchParams.forEach((value, name) => {
+      allSearchParams[name] = searchParams.getAll(name);
+    });
+
     for (let k in defaultParam) {
       let defaultValue = defaultParam[k];
       //取得数组
-      let tempValue = params[k];
+      let tempValue = searchParams.getAll(k);
       let array: string[] = [];
       if (!tempValue) {
         if (typeof defaultValue == "string") {
@@ -52,19 +58,14 @@ export function useRouterHelper<T extends { [key: string]: string | number | str
     }
 
     return {
+      allSearchParams: allSearchParams,
       param: Object.assign({}, retParam, otherParam),
-      path: router.pathname,
+      path: pathname,
       push: (param: { [key: string]: any }) => {
-        router.push({
-          pathname: router.pathname + "",
-          query: Object.assign({}, router.query, param),
-        });
+        router.push(pathname, Object.assign({}, allSearchParams, param));
       },
       replace: (param: { [key: string]: any }) => {
-        router.replace({
-          pathname: router.pathname + "",
-          query: Object.assign({}, router.query, param),
-        });
+        router.replace(pathname, Object.assign({}, allSearchParams, param));
       },
     };
   };
