@@ -9,6 +9,7 @@ export default function GameMenu() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const domRef = useRef<Element>();
   const router = useRouter();
+  const wordInstance = WordHelper.useInstance();
 
   const showConfetti = (dom: Element) => {
     const domRect = dom.getBoundingClientRect();
@@ -51,7 +52,7 @@ export default function GameMenu() {
                   }
                 }}
               >
-                {WordHelper.getInstance().map((animal, index) => (
+                {wordInstance.map((animal, index) => (
                   <SelectItem key={index}>{animal.name}</SelectItem>
                 ))}
               </Select>
