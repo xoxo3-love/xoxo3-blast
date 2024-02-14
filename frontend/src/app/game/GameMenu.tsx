@@ -1,8 +1,10 @@
 import { Button, Listbox, ListboxItem, Select, SelectItem } from "@nextui-org/react";
 import { configZH } from "../airdrop/word/zh";
 import { HeartSVG } from "./HeartSVG";
+import { useState } from "react";
 
 export default function GameMenu() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   return (
     <div>
       <div className="flex flex-col items-center justify-center gap-4">
@@ -13,11 +15,21 @@ export default function GameMenu() {
       <div className="relative flex h-full min-h-[320px] w-full items-center justify-center rounded-2xl bg-gradient-to-tr from-[#FF72E1] to-[#F54C7A] px-8 py-12">
         <div>
           <div className="flex flex-row gap-4">
-            <Select label="关系阶段" className="w-[200px]">
-              {configZH.map((animal) => (
-                <SelectItem key={animal.name} value={animal.name}>
-                  {animal.name}
-                </SelectItem>
+            <Select
+              label="关系阶段"
+              className="w-[200px]"
+              selectedKeys={[selectedIndex + ""]}
+              onChange={(e) => {
+                if (!e.target.value) {
+                  return;
+                }
+                const value = parseInt(e.target.value);
+                setSelectedIndex(value);
+                console.log("xxx", value);
+              }}
+            >
+              {configZH.map((animal, index) => (
+                <SelectItem key={index}>{animal.name}</SelectItem>
               ))}
             </Select>
             <Button className="h-auto bg-pink-200 text-pink-900">Start</Button>
