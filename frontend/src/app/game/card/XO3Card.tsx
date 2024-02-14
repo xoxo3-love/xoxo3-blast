@@ -37,7 +37,7 @@ export function XO3Card() {
           setCanClose(false);
           setTimeout(() => {
             setCanClose(true);
-          }, 3000);
+          }, 1000);
         }
       }}
     >
@@ -51,7 +51,7 @@ export function XO3Card() {
         <div className="card-face back relative rounded-md bg-pink-500 p-4">
           {data.list[currentIndex]}
           <div className={`absolute right-2 top-2 ${canClose ? "" : "hidden"}`}>
-            <SVGWrap svg={SVGMapper.materialCloseFilled} />
+            <SVGWrap svg={SVGMapper.materialFlipCameraAndroidFilled} />
           </div>
         </div>
       </div>
