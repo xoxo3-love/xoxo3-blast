@@ -41,10 +41,14 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-// require('dotenv').config();
+const HDWalletProvider = require("@truffle/hdwallet-provider")
+require("dotenv").config()
+let config = {
+  privateKey: process.env.ACCOUNT_PRIVATE_KEY,
+  infuraId: "",
+}
 // const { MNEMONIC, PROJECT_ID } = process.env;
-
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const { INFURA_API_KEY, MNEMONIC, POLYGONSCAN_KEY, ETHERSCAN_KEY } = process.env
 
 module.exports = {
   /**
@@ -64,11 +68,34 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
+    development: {
+      host: "127.0.0.1", // Localhost (default: none)
+      port: 8545, // Standard Ethereum port (default: none)
+      network_id: "*", // Any network (default: none)
+    },
+    mumbai: {
+      // provider: () => new HDWalletProvider(config.privateKey, `https://matic-mumbai.chainstacklabs.com`),
+      provider: () => new HDWalletProvider(config.privateKey, `https://polygon-mumbai.blockpi.network/v1/rpc/public`),
+      networkCheckTimeout: 60 * 60 * 1000,
+      gas: 10000000,
+      gasPrice: 1500000000,
+      network_id: 80001,
+    },
+    sepolia: {
+      provider: () => new HDWalletProvider(config.privateKey, `https://sepolia.infura.io/v3/${INFURA_API_KEY}`),
+      networkCheckTimeout: 60 * 60 * 1000,
+      gas: 10000000,
+      gasPrice: 1500000000,
+      network_id: 11155111,
+    },
+    blastSepolia: {
+      provider: () => new HDWalletProvider(config.privateKey, `https://sepolia.blast.io`),
+      networkCheckTimeout: 60 * 60 * 1000,
+      gas: 10000000,
+      gasPrice: 1500000000,
+      network_id: 168587773,
+    },
+
     //
     // An additional network, but with some advanced options…
     // advanced: {
@@ -106,7 +133,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.19",      // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.19", // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {
@@ -115,7 +142,7 @@ module.exports = {
       //  },
       //  evmVersion: "byzantium"
       // }
-    }
+    },
   },
 
   // Truffle DB is currently disabled by default; to enable it, change enabled:
@@ -138,4 +165,4 @@ module.exports = {
   //     }
   //   }
   // }
-};
+}
