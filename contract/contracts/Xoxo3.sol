@@ -14,7 +14,8 @@ contract Xoxo3 is ERC20, Ownable {
   uint256 public txFeeRatio;
   uint256 public burnRatio;
 
-  constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) Ownable(msg.sender) {
+  // constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) Ownable(msg.sender) {
+  constructor() ERC20("Xoxo3.love Token", "XOXO3") Ownable(msg.sender) {
     feeAccount = msg.sender;
     txFeeRatio = 1;
     burnRatio = 1;
