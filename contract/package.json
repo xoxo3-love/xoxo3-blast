@@ -1,0 +1,21 @@
+{
+  "name": "xoxo3-love-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".prettierrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.1",
+    "@truffle/hdwallet-provider": "^2.1.15",
+    "dotenv": "^16.4.4",
+    "truffle-plugin-verify": "^0.6.7",
+    "tunnel": "^0.0.6"
+  }
+}
