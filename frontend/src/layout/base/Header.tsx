@@ -49,7 +49,12 @@ export default function Header() {
         <NavbarLogo />
 
         <NavbarItem_Constom href="/">{wordSiteInstance.nav.home}</NavbarItem_Constom>
-        <NavbarItem_Constom href="/airdrop">{wordSiteInstance.nav.airdrop}</NavbarItem_Constom>
+        <NavbarItem_Constom
+          href="https://docs.google.com/forms/d/e/1FAIpQLScSiwRac5-46MoiUaz_-3vdaz30u_VxrJUt_yKJndjK8A3h3A/viewform"
+          target="_blank"
+        >
+          {wordSiteInstance.nav.airdrop}
+        </NavbarItem_Constom>
         <NavbarItem_Constom
           href="https://xoxo3.notion.site/xoxo3/XOXO3-love-34542c6cffe6426d93371aadc5d32bb5"
           target="_blank"
