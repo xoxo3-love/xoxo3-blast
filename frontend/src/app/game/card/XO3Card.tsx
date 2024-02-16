@@ -17,6 +17,7 @@ export function XO3Card() {
     index: 0,
   });
   const wordInstance = WordHelper.useGameInstance();
+  const wordSiteInstance = WordHelper.useInstance();
   const data = wordInstance[param.index];
 
   return (
@@ -48,7 +49,7 @@ export function XO3Card() {
         <div className="card-face front rounded-md bg-pink-300">
           <div className="flex flex-col items-center justify-center gap-4 text-pink-500">
             <HeartSVG />
-            <div>翻</div>
+            <div>{wordSiteInstance.game.tap}</div>
           </div>
         </div>
         <div className="card-face back relative rounded-md bg-pink-500 p-4" id="show_card">
