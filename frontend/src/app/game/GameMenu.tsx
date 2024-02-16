@@ -2,7 +2,7 @@ import { Button, Listbox, ListboxItem, Select, SelectItem } from "@nextui-org/re
 import { HeartSVG } from "./HeartSVG";
 import { LegacyRef, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { WordHelper } from "@/helper/word/WordHelper";
+import { WordHelper } from "@/language/WordHelper";
 import { ConfettiHelper } from "@/helper/ConfettiHelper";
 
 export default function GameMenu() {

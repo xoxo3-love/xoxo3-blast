@@ -1,7 +1,7 @@
 import { LanguageStore } from "@/language/LanguageHelper";
-import { configZH } from "./zh";
-import { configHK } from "./zh-HK";
-import { configEN } from "./en";
+import { configZH } from "./word/zh";
+import { configHK } from "./word/zh-HK";
+import { configEN } from "./word/en";
 
 export const WordHelper = {
   useInstance() {

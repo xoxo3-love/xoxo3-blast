@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./card.css";
 import { HeartSVG } from "../HeartSVG";
-import { WordHelper } from "@/helper/word/WordHelper";
+import { WordHelper } from "@/language/WordHelper";
 import { useRouterHelper } from "@/helper/useRouterHelper";
 import { Button } from "@nextui-org/react";
 import SVGWrap from "@/components/icon/SVGWrap";
