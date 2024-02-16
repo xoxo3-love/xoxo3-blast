@@ -14,6 +14,7 @@ import { LayoutStore } from "../helper/LayoutHelper";
 import NavbarLogo from "../logo/NavbarLogo";
 import { usePathname, useRouter } from "next/navigation";
 import LanguageSwitch from "@/language/LanguageSwitch";
+import { WordHelper } from "@/language/WordHelper";
 
 function NavbarItem_Constom(props: LinkProps) {
   const pathname = usePathname();
@@ -33,6 +34,7 @@ function NavbarItem_Constom(props: LinkProps) {
 export default function Header() {
   let { maxWidth_CONST } = LayoutStore;
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const wordSiteInstance = WordHelper.useInstance();
 
   const menuItems = ["首页", "治理"];
 
@@ -46,13 +48,13 @@ export default function Header() {
       <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         <NavbarLogo />
 
-        <NavbarItem_Constom href="/">首页</NavbarItem_Constom>
-        <NavbarItem_Constom href="/airdrop">空投</NavbarItem_Constom>
+        <NavbarItem_Constom href="/">{wordSiteInstance.nav.home}</NavbarItem_Constom>
+        <NavbarItem_Constom href="/airdrop">{wordSiteInstance.nav.airdrop}</NavbarItem_Constom>
         <NavbarItem_Constom
           href="https://xoxo3.notion.site/xoxo3/XOXO3-love-34542c6cffe6426d93371aadc5d32bb5"
           target="_blank"
         >
-          治理
+          {wordSiteInstance.nav.gov}
         </NavbarItem_Constom>
       </NavbarContent>
 
