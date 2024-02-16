@@ -13,6 +13,11 @@ export const SITE_EN = {
       `4. Creators (coming soon) can mint NFTs and permanently receive rewards.`,
     ],
   },
+  gameTye: {
+    poker: "Poker",
+    lotteryWheel: "Lottery Wheel",
+    flyingChess: "Flying Chess",
+  },
   game: {
     tap: "Flip",
     gameTip: "If you fail to complete the task, be prepared for the other person's punishment!",

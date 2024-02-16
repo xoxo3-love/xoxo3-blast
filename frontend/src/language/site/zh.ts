@@ -13,6 +13,11 @@ export const SITE_ZH = {
       `4. 创作者(待上线)，可铸造 NFT，永久获得打赏。`,
     ],
   },
+  gameTye: {
+    poker: "扑克",
+    lotteryWheel: "幸运大转盘",
+    flyingChess: "情侣飞行棋",
+  },
   game: {
     tap: "翻",
     gameTip: "完成不了任务，要受到对方惩罚哦",

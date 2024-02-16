@@ -13,6 +13,11 @@ export const SITE_ZH_HK = {
       `4. 創作者(待上線)，可鑄造 NFT，永久獲得打賞。`,
     ],
   },
+  gameTye: {
+    poker: "撲克",
+    lotteryWheel: "幸運大轉盤",
+    flyingChess: "情侶飛行棋",
+  },
   game: {
     tap: "翻",
     gameTip: "完成不了任務，要受到對方懲罰哦",
