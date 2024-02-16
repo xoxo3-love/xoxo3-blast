@@ -9,7 +9,8 @@ export default function GameMenu() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const domRef = useRef(null);
   const router = useRouter();
-  const wordInstance = WordHelper.useGameInstance();
+  const wordGameInstance = WordHelper.useGameInstance();
+  const wordSiteInstance = WordHelper.useInstance();
 
   return (
     <div>
@@ -23,7 +24,7 @@ export default function GameMenu() {
           <div className="flex flex-row gap-4">
             <div ref={domRef}>
               <Select
-                label="关系阶段"
+                label={wordSiteInstance.gameMenu.chooiceLabel}
                 className="w-[200px]"
                 selectedKeys={[selectedIndex + ""]}
                 onChange={(e) => {
@@ -40,7 +41,7 @@ export default function GameMenu() {
                   }
                 }}
               >
-                {wordInstance.map((animal, index) => (
+                {wordGameInstance.map((animal, index) => (
                   <SelectItem key={index}>{animal.name}</SelectItem>
                 ))}
               </Select>
@@ -62,10 +63,14 @@ export default function GameMenu() {
       </div>
 
       <div className="text-sm text-foreground-600">
-        <div className="mt-4">1. 预设不同阶段互动内容，恋爱，情趣，好玩。满足各种口味快速开局。</div>
-        <div className="mt-2">2. 持有 $XOXO3，享有会员权限。</div>
-        <div className="mt-2">3. 持有 vXOXO3，均分 xoxo3.love 网站收益。</div>
-        <div className="mt-2">4. 创作者(待上线)，可铸造 NFT，永久获得打赏。</div>
+        <div className="mt-2"></div>
+        {wordSiteInstance.gameMenu.menuTip.map((item, index) => {
+          return (
+            <div className="mt-2" key={index}>
+              {item}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
