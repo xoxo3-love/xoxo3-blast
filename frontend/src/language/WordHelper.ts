@@ -4,7 +4,7 @@ import { configHK } from "./word/zh-HK";
 import { configEN } from "./word/en";
 
 export const WordHelper = {
-  useInstance() {
+  useGameInstance() {
     const { currentLanguage } = LanguageStore;
 
     if (currentLanguage == "zh-HK") {

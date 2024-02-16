@@ -16,7 +16,7 @@ export function XO3Card() {
   const { param } = useRouterHelper({
     index: 0,
   });
-  const wordInstance = WordHelper.useInstance();
+  const wordInstance = WordHelper.useGameInstance();
   const data = wordInstance[param.index];
 
   return (
