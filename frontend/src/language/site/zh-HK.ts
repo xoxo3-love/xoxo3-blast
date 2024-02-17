@@ -3,6 +3,8 @@ export const SITE_ZH_HK = {
     home: "首頁",
     airdrop: "空投",
     gov: "治理",
+    airdropURL:
+      "https://docs.google.com/forms/d/e/1FAIpQLScSiwRac5-46MoiUaz_-3vdaz30u_VxrJUt_yKJndjK8A3h3A/viewform?usp=sf_link",
   },
   gameMenu: {
     chooiceLabel: "關係階段",

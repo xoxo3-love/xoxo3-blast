@@ -49,10 +49,7 @@ export default function Header() {
         <NavbarLogo />
 
         <NavbarItem_Constom href="/">{wordSiteInstance.nav.home}</NavbarItem_Constom>
-        <NavbarItem_Constom
-          href="https://docs.google.com/forms/d/e/1FAIpQLScSiwRac5-46MoiUaz_-3vdaz30u_VxrJUt_yKJndjK8A3h3A/viewform"
-          target="_blank"
-        >
+        <NavbarItem_Constom href={wordSiteInstance.nav.airdropURL} target="_blank">
           {wordSiteInstance.nav.airdrop}
         </NavbarItem_Constom>
         <NavbarItem_Constom

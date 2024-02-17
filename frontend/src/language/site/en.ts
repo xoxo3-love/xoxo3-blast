@@ -3,6 +3,8 @@ export const SITE_EN = {
     home: "Home",
     airdrop: "Airdrop",
     gov: "Governance",
+    airdropURL:
+      "https://docs.google.com/forms/d/e/1FAIpQLSc6IBV042WrfMI4P6ieauYBjg1loWKZYGUL1vapiHZWxd03qA/viewform?usp=sf_link",
   },
   gameMenu: {
     chooiceLabel: "Relationship Stage",
